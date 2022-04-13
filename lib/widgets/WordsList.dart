@@ -67,9 +67,12 @@ class _WordsListState extends State<WordsList> {
   }
 
   Widget _buildListTile(Pair pair){
+  int index = pairs.indexWhere((e) => e.id == pair.id) + 1;
    return ListTile(
-
-      title: Text("${pairs.indexWhere((e) => e.id == pair.id) + 1 } ${pair.title}"),
+      leading: const Icon(
+        Icons.adb_outlined
+      ),
+      title: Text(pair.title),
       trailing: conditionalLikeIcon(pair.isFavorite,pair.id),
       onLongPress: (){
         showDialog(

@@ -30,22 +30,15 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
-  late final List<Pair> pairs;
 
-  @override
-  void didChangeDependencies() {
-    if(pairs.isNotEmpty) return;
-    pairs = Provider.of<PairModel>(context).pairs;
 
-    super.didChangeDependencies();
-  }
 
   List<Widget> _buildAppBarButtons(){
     return [
       IconButton(
           onPressed: (){
             Navigator.push(context,MaterialPageRoute(
-                builder: (ctx) => FavoriteList(pairs: pairs)
+                builder: (ctx) => FavoriteList()
             ));
           },
           icon: const Icon(

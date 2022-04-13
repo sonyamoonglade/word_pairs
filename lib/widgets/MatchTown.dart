@@ -72,6 +72,8 @@ class _MatchTownState extends State<MatchTown> {
 
   }
 
+
+
   Widget _buildQuestion(){
     return  Text("Is it ${gameQ.first.cityName}?",style:
     GoogleFonts.getFont('Cairo',
@@ -174,6 +176,13 @@ class _MatchTownState extends State<MatchTown> {
     );
   }
 
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    gameQ = [] as Queue<Question>;
+
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -10,16 +10,16 @@ import 'package:word_pairs/widgets/HomePage.dart';
 class FavoriteList extends StatelessWidget {
 
 
-  const FavoriteList({Key? key, required this.pairs}) : super(key: key);
+   FavoriteList({Key? key}) : super(key: key);
 
-   final List<Pair> pairs;
+  late final List<Pair> pairs;
 
 
 
 
   @override
   Widget build(BuildContext context) {
-  // pairs = Provider.of<PairModel>(context).pairs;
+  pairs = Provider.of<PairModel>(context).pairs;
   late List<Pair> favoritePairs = pairs.where((e) => e.isFavorite == true).toList();
 
     return Scaffold(
