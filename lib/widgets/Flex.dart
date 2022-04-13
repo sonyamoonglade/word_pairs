@@ -15,38 +15,32 @@ class FlexContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color bgColor = Colors.white;
     return Scaffold(
       appBar: AppBar(
-        title:Text("Futures"),
+        title: const Text("Futures"),
 
       ),
       body:  Center(
-          child: Container(
+          child: FutureBuilder(
+            future: _getStrings() ,
+            builder: (BuildContext ctx,AsyncSnapshot<List<String>> result){
+              List<String>? data = result.data;
+              if(result.connectionState == ConnectionState.waiting){
+                return const CircularProgressIndicator();
+              }
 
-            child: FutureBuilder(
-              // initialData: ["a"],
-              future: _getStrings() ,
-              builder: (BuildContext ctx,AsyncSnapshot<List<String>> result){
-                List<String>? data = result.data;
-                if(result.connectionState == ConnectionState.waiting){
-                  return const CircularProgressIndicator();
-                }
-
-                return Container(
-                  color: Colors.yellowAccent,
-                  child: ListView.builder(
-
-                      itemCount: data?.length ?? 0,
-                      itemBuilder: (BuildContext ctx, int i){
-                        return ListTile(
-                          title: Text(data![i]),
-                        );
-                      }
-                  ),
-                );
-              },
-            ),
+              return Container(
+                color: Colors.yellowAccent,
+                child: ListView.builder(
+                    itemCount: data?.length ?? 0,
+                    itemBuilder: (BuildContext ctx, int i){
+                      return ListTile(
+                        title: Text(data![i]),
+                      );
+                    }
+                ),
+              );
+            },
           )
       ),
     );

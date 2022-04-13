@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:word_pairs/inheritedWidgets/InheritedTodo.dart';
 import 'package:word_pairs/models/Pair_model.dart';
 
 class AddPair extends StatefulWidget {
